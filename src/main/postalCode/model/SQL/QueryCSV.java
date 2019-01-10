@@ -2,14 +2,13 @@ package model.SQL;
 
 import model.table.postalCode;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class QueryCSV {
     private static QueryCSV ourInstance = new QueryCSV();
-    private static ConexionCSV mConexion = ConexionCSV.getInstance();
+    private static Conexion mConexion = Conexion.getInstance();
     private static Connection mConnection= mConexion.conectar();
 
     public static QueryCSV getInstance() {

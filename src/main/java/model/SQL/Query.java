@@ -24,6 +24,10 @@ public class Query {
         return errorNumber;
     }
 
+    public void setErrorNumber(int errorNumber) {
+        this.errorNumber = errorNumber;
+    }
+
     public void insertLodging(Lodging lodging) {
 
 

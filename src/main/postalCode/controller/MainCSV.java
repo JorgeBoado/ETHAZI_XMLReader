@@ -1,6 +1,6 @@
 package controller;
 
-import model.SQL.ConexionCSV;
+import model.SQL.Conexion;
 import model.table.postalCode;
 import model.SQL.QueryCSV;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MainCSV {
     public static ArrayList<postalCode> postalCodes = new ArrayList<>();
-    private static ConexionCSV mConexion=ConexionCSV.getInstance();
+    private static Conexion mConexion=Conexion.getInstance();
     public static void main(String[] args) {
         mConexion.conectar();
         String path;
