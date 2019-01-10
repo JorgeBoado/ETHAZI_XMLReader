@@ -74,6 +74,9 @@ public class XML_Reader {
             case "postalcode":
                 lodging.setPostalcode(value);
                 break;
+            case "municipalitycode":
+                lodging.setMunicipalitycode(value);
+                break;
             case "latitudelongitude":
                 lodging.setCoordinates(value);
                 break;

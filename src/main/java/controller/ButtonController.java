@@ -59,9 +59,10 @@ public class ButtonController implements ActionListener {
                         mQuery.insertLodging(lodging);
                         Window.getInstance().getProgressBar().setValue(prog++);
                     }
-                    JOptionPane.showMessageDialog(null, mReader.getLodgings().size() + " lodging have been imported.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, mReader.getLodgings().size() + " lodging have been imported and " + mQuery.getErrorNumber() + " rows have been skipped.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Window.getInstance().getBtn_ImportData().setEnabled(true);
                     Window.getInstance().getProgressBar().setVisible(false);
+                    //JOptionPane.showMessageDialog(null, "No se han introducido " + mQuery.getErrorNumber()+".", "Skipped rows", JOptionPane.ERROR_MESSAGE);
                 }).start();
 
                 break;

@@ -5,45 +5,26 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.jsoup.Jsoup;
 
 public class Lodging {
-    private String signatura = "";
-    private String name = "";
-    private String description = "";
-    private String type = "";
-    private String phone = "";
-    private String locality = "";
-    private String addres = "";
-    private String marks = "";
-    private String postalcode = "";
-    private String coordinates = "";
-    private String category = "";
-    private String turismemail = "";
-    private String web = "";
+    private String signatura;
+    private String name;
+    private String description;
+    private String type;
+    private String phone;
+    private String locality;
+    private String addres;
+    private String marks;
+    private String postalcode;
+    private String municipalitycode;
+    private String coordinates;
+    private String category;
+    private String turismemail;
+    private String web;
     private int capacity;
-    private String friendlyurl = "";
-    private String physicalurl = "";
-    private String zipfile = "";
+    private String friendlyurl;
+    private String physicalurl;
+    private String zipfile;
 
     public Lodging() {
-    }
-
-    public Lodging( String signatura, String name, String description, String type, String phone, String locality, String addres, String marks, String postalcode, String coordinates, String category, String turismemail, String web, int capacity, String friendlyurl, String physicalurl, String zipfile) {
-        this.signatura = signatura;
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.phone = phone;
-        this.locality = locality;
-        this.addres = addres;
-        this.marks = marks;
-        this.postalcode = postalcode;
-        this.coordinates = coordinates;
-        this.category = category;
-        this.turismemail = turismemail;
-        this.web = web;
-        this.capacity = capacity;
-        this.friendlyurl = friendlyurl;
-        this.physicalurl = physicalurl;
-        this.zipfile = zipfile;
     }
 
     public String getSignatura() {
@@ -116,6 +97,14 @@ public class Lodging {
 
     public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
+    }
+
+    public String getMunicipalitycode() {
+        return municipalitycode;
+    }
+
+    public void setMunicipalitycode(String municipalitycode) {
+        this.municipalitycode = municipalitycode;
     }
 
     public String getCoordinates() {

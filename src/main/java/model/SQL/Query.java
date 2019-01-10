@@ -11,6 +11,7 @@ public class Query {
     private static Query ourInstance = new Query();
     private static Conexion mConexion = Conexion.getInstance();
     private static Connection mConnection = mConexion.conectar();
+    private int errorNumber;
 
     public static Query getInstance() {
         return ourInstance;
@@ -19,18 +20,24 @@ public class Query {
     private Query() {
     }
 
+    public int getErrorNumber() {
+        return errorNumber;
+    }
+
     public void insertLodging(Lodging lodging) {
+
+
         try {
             PreparedStatement st = mConnection.prepareStatement(
                     "INSERT INTO `lodging` " +
-                            "(signatura, `name`, description, `type`, phone, locality, address, marks, postalcode, `coordinates`," +
+                            "(signatura, `name`, description, `type`, phone, locality, address, marks, postalcode, municipalitycode, `coordinates`," +
                             " category, turismemail, web, capacity, friendlyurl, physicalurl, zipfile) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE " +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE " +
                             "signatura = ?, `name` = ?, description = ?, `type` = ?, phone = ?, locality = ?, address = ?, marks = ?," +
-                            " postalcode = ?, `coordinates` = ?, category = ?, turismemail = ?, web = ?, capacity = ?, friendlyurl = ?, physicalurl = ?, zipfile = ?");
+                            " postalcode = ?, municipalitycode = ?, `coordinates` = ?, category = ?, turismemail = ?, web = ?, capacity = ?, friendlyurl = ?, physicalurl = ?, zipfile = ?");
 
             int i = 1;
-            int x = i + 17;
+            int x = i + 18;
 
             //Insert_Signatura
             st.setString(i++, lodging.getSignatura());
@@ -77,6 +84,11 @@ public class Query {
             //Update_PostalCode
             st.setString(x++, lodging.getPostalcode());
 
+            //Insert_MunicipalityCode
+            st.setString(i++, lodging.getMunicipalitycode());
+            //Update_MunicipalityCode
+            st.setString(x++, lodging.getMunicipalitycode());
+
             //Insert_Coordinates
             st.setString(i++, lodging.getCoordinates());
             //Update_Coordinates
@@ -113,15 +125,17 @@ public class Query {
             st.setString(x++, lodging.getPhysicalurl());
 
             //Insert_ZipFile
-            st.setString(i++, lodging.getZipfile());
+            st.setString(i, lodging.getZipfile());
             //Update_ZipFile
-            st.setString(x++, lodging.getZipfile());
+            st.setString(x, lodging.getZipfile());
 
-            st.executeUpdate();
+            st.execute();
 
         } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error: " + e.getErrorCode(), JOptionPane.ERROR_MESSAGE);
+            errorNumber += 1;
+            //JOptionPane.showMessageDialog(null, e.getMessage(), "Error: " + e.getErrorCode(), JOptionPane.ERROR_MESSAGE);
+
         }
     }
 }
+

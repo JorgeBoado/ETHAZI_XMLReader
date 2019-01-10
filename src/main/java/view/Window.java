@@ -1,8 +1,10 @@
 package view;
 
+import com.bulenkov.darcula.DarculaLaf;
 import controller.ButtonController;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicLookAndFeel;
 import java.awt.*;
 
 public class Window {
@@ -85,9 +87,9 @@ public class Window {
     private void LookAndFeel() {
         try {
             // Set System L&F
-            UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            BasicLookAndFeel darcula = new DarculaLaf();
+            UIManager.setLookAndFeel(darcula);
+        } catch (UnsupportedLookAndFeelException e) {
             // handle exception
         }
     }

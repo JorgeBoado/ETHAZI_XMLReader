@@ -14,11 +14,13 @@ public class Conexion {
     private Properties mPropiedades;
 
     //Constantes de Inicio de sesion
-    private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/";
+    /*private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/";*/
+    private static final String DATABASE_DRIVER = "org.mariadb.jdbc.Driver";
+    private static final String DATABASE_URL = "jdbc:mariadb://kasserver.synology.me:3307/";
     private static final String DATABASE_NAME = "reto_gp4";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String USERNAME = "gp4";
+    private static final String PASSWORD = "MmlYOc8DvJXQns7D";
     private static final String MAX_POOL = "250";
 
     // El constructor privado no permite que se genere un constructor por defecto.
