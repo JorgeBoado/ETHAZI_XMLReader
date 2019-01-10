@@ -117,7 +117,8 @@ public class Query {
             //Update_ZipFile
             st.setString(x++, lodging.getZipfile());
 
-            st.execute();
+            st.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error: " + e.getErrorCode(), JOptionPane.ERROR_MESSAGE);
