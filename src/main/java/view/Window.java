@@ -6,7 +6,13 @@ import controller.ButtonController;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicLookAndFeel;
 import java.awt.*;
-
+/**
+ * Clase de interfaz grafica.
+ *
+ * @author Jorge
+ * @version 1.2
+ * @since 2018-12-29
+ */
 public class Window {
 
 
@@ -20,7 +26,12 @@ public class Window {
     private JButton btn_Find;
     private JProgressBar progressBar;
 
-
+    /**
+     * En caso que no exista una instancia la crea y la devuelve.
+     * En caso de existirla la devuelve.
+     *
+     * @return Instancia de Window.
+     */
     public static Window getInstance() {
         if (mInstance == null) {
             mInstance = new Window();
@@ -40,7 +51,7 @@ public class Window {
      */
     private void initialize() {
         this.LookAndFeel();
-        mButtonController= ButtonController.getInstance();
+        mButtonController = ButtonController.getInstance();
 
         frame = new JFrame();
         frame.setBounds(100, 100, 440, 200);
@@ -83,7 +94,10 @@ public class Window {
         frame.getContentPane().add(progressBar);
     }
 
-
+    /**
+     * Activa un tema oscuro, para ello hay que importar el paquete de dracula-1.0.0.jar
+     * situado en resources y que no funciona la dependencia de Maven.
+     */
     private void LookAndFeel() {
         try {
             // Set System L&F
@@ -98,53 +112,24 @@ public class Window {
         return frame;
     }
 
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
     public JTextField getTxf_FilePath() {
         return txf_FilePath;
     }
 
-    public void setTxf_FilePath(JTextField txf_FilePath) {
-        this.txf_FilePath = txf_FilePath;
-    }
-
+    /**
+     * Coloca el texto de la ruta del archivo en el textBox FilePath.
+     * @param path Ruta del archivo a mostrar.
+     */
     public void setTextPath(String path) {
         this.txf_FilePath.setText(path);
-        this.txf_FilePath.repaint();
-        this.txf_FilePath.validate();
     }
 
     public JButton getBtn_ImportData() {
         return btn_ImportData;
     }
 
-    public void setBtn_ImportData(JButton btn_ImportData) {
-        this.btn_ImportData = btn_ImportData;
-    }
-
-    public JLabel getTxt_SelectText() {
-        return txt_SelectText;
-    }
-
-    public void setTxt_SelectText(JLabel txt_SelectText) {
-        this.txt_SelectText = txt_SelectText;
-    }
-
-    public JButton getBtn_Find() {
-        return btn_Find;
-    }
-
-    public void setBtn_Find(JButton btn_Find) {
-        this.btn_Find = btn_Find;
-    }
-
     public JProgressBar getProgressBar() {
         return progressBar;
     }
 
-    public void setProgressBar(JProgressBar progressBar) {
-        this.progressBar = progressBar;
-    }
 }

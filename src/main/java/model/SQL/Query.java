@@ -7,27 +7,53 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Esta clase es la encargada de hacer las operaciones contra la BBDD.
+ *
+ * @author Jorge
+ * @version 1.3
+ * @since 2019-01-06
+ */
 public class Query {
     private static Query ourInstance = new Query();
     private static Conexion mConexion = Conexion.getInstance();
     private static Connection mConnection = mConexion.conectar();
     private int errorNumber;
 
+    /**
+     * Devuelve una instancia del objeto.
+     * @return Devuelve una instancia del objeto Query.
+     */
     public static Query getInstance() {
         return ourInstance;
     }
 
+    /**
+     * Consotructor del objeto Query
+     */
     private Query() {
     }
 
+    /**
+     * Devuelve el numero de alojamientos omitidos.
+     * @return Numero de alojamientos omitidos.
+     */
     public int getErrorNumber() {
         return errorNumber;
     }
 
+    /**
+     * Fija el numero de errores al parametro recibido.
+     * @param errorNumber Numero al que quieres fijar el numero de errores.
+     */
     public void setErrorNumber(int errorNumber) {
         this.errorNumber = errorNumber;
     }
 
+    /**
+     * Inserta o actualiza en la base de datos un alojamiento que recibe.
+     * @param lodging Alojamiento a insertar.
+     */
     public void insertLodging(Lodging lodging) {
 
 

@@ -4,6 +4,13 @@ package model.tables;
 import org.apache.commons.text.StringEscapeUtils;
 import org.jsoup.Jsoup;
 
+/**
+ * Objeto alojamiento.
+ *
+ * @author Jorge
+ * @version 1.3
+ * @since 2018-12-29
+ */
 public class Lodging {
     private String signatura;
     private String name;
@@ -24,6 +31,9 @@ public class Lodging {
     private String physicalurl;
     private String zipfile;
 
+    /**
+     * Constructor de objeto alojamiento.
+     */
     public Lodging() {
     }
 
@@ -171,7 +181,15 @@ public class Lodging {
         this.zipfile = zipfile;
     }
 
-    public static String descCleaner(String text){
+    /**
+     * Metodo encargado de eliminar de la String recibida los caracteres relcionados con el HTML.
+     * Usa metodos de las clases StringEscapeUtility para mostrar los caracteres HTML y
+     * Jsoup para eliminarlos.
+     *
+     * @param text String a filtrar.
+     * @return Devuelve la String recibida sin los caracteres de HTML.
+     */
+    public static String descCleaner(String text) {
         return Jsoup.parse(StringEscapeUtils.unescapeHtml4(text)).text();
     }
 }

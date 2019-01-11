@@ -9,23 +9,42 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Esta clase es la encargada de leer el XML y generar y llenar los Objeros de alojamientos.
+ *
+ * @author Jorge
+ * @version 1.1
+ * @since 2019-01-05
+ */
+
 public class XML_Reader {
 
     private ArrayList<Lodging> lodgings;
     private File file;
+
+    /**
+     * Asocia la variable file con la ruta del aarchivo que recibe y genera un numero ArrayList
+     * de alojamientos.
+     *
+     * @param file Ruta del archivo que se va a querer leer.
+     */
 
     public XML_Reader(String file) {
         this.file = new File(file);
         this.lodgings = new ArrayList<>();
     }
 
+    /**
+     * Lee el  XML y lo separa en nodos.
+     * Llena el ArrayList con los alojamientos.
+     */
     public void readAll() {
 
         try {
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
             doc.getDocumentElement().normalize();
 
-            this.lodgings = new ArrayList<>();
+            lodgings = new ArrayList<>();
 
             NodeList nodes = doc.getElementsByTagName("row");
             for (int i = 0; i < nodes.getLength(); i++) {
@@ -33,7 +52,7 @@ public class XML_Reader {
                 NodeList childrens = nodes.item(i).getChildNodes();
 
                 for (int x = 0; x < childrens.getLength(); x++) {
-                    this.insertAlojamiento(lodging, childrens.item(x).getNodeName(), childrens.item(x).getTextContent());
+                    insertAlojamiento(lodging, childrens.item(x).getNodeName(), childrens.item(x).getTextContent());
                 }
                 lodgings.add(lodging);
             }
@@ -44,6 +63,13 @@ public class XML_Reader {
         }
     }
 
+    /**
+     * Localiza las etiquetas en la String que recibe y segun la etiqueta que encuentre va asignando
+     * los atributos al objeto de apartamentos que se ha mandado.
+     * @param lodging El objeto de apartamento mandado.
+     * @param nodeName Es la String que recibe para identificar que atributo es.
+     * @param value String con el contenido del atributo del objeto.
+     */
     private void insertAlojamiento(Lodging lodging, String nodeName, String value) {
 
         switch (nodeName) {
@@ -104,6 +130,10 @@ public class XML_Reader {
         }
     }
 
+    /**
+     * Devuelve un ArrayList.
+     * @return Devuelve el ArrayList de apartamentos.
+     */
     public ArrayList<Lodging> getLodgings() {
         return lodgings;
     }
