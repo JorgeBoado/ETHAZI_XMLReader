@@ -93,7 +93,7 @@ public class XML_Reader {
                 lodging.setPhone(value.replaceAll("\\s+", ""));
                 break;
             case "address":
-                lodging.setAddres(value);
+                lodging.setAddress(value);
                 break;
             case "marks":
                 lodging.setMarks(value);

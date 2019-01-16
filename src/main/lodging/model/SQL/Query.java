@@ -2,7 +2,6 @@ package model.SQL;
 
 import model.tables.Lodging;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -95,9 +94,9 @@ public class Query {
             st.setString(x++, lodging.getPhone());
 
             //Insert_Address
-            st.setString(i++, lodging.getAddres());
+            st.setString(i++, lodging.getAddress());
             //Update_Address
-            st.setString(x++, lodging.getAddres());
+            st.setString(x++, lodging.getAddress());
 
             //Insert_Marks
             st.setString(i++, lodging.getMarks());

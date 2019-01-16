@@ -8,7 +8,7 @@ import org.jsoup.Jsoup;
  * Objeto alojamiento.
  *
  * @author Jorge
- * @version 1.3
+ * @version 1.3.1
  * @since 2018-12-29
  */
 public class Lodging {
@@ -17,7 +17,7 @@ public class Lodging {
     private String description;
     private String type;
     private String phone;
-    private String addres;
+    private String address;
     private String marks;
     private String postalcode;
     private String municipalitycode;
@@ -49,7 +49,7 @@ public class Lodging {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = cleaner(name);
     }
 
     public String getDescription() {
@@ -57,7 +57,7 @@ public class Lodging {
     }
 
     public void setDescription(String description) {
-        this.description = descCleaner(description);
+        this.description = cleaner(description);
     }
 
     public String getType() {
@@ -76,12 +76,12 @@ public class Lodging {
         this.phone = phone;
     }
 
-    public String getAddres() {
-        return addres;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddres(String addres) {
-        this.addres = addres;
+    public void setAddress(String address) {
+        this.address = cleaner(address);
     }
 
     public String getMarks() {
@@ -180,7 +180,7 @@ public class Lodging {
      * @param text String a filtrar.
      * @return Devuelve la String recibida sin los caracteres de HTML.
      */
-    public static String descCleaner(String text) {
+    public static String cleaner(String text) {
         return Jsoup.parse(StringEscapeUtils.unescapeHtml4(text)).text();
     }
 }
