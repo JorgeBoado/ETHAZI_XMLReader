@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Esta clase es la encargada de hacer las operaciones contra la BBDD.
  *
  * @author Jorge
- * @version 1.3
+ * @version 1.4
  * @since 2019-01-06
  */
 public class Query {
@@ -60,14 +60,14 @@ public class Query {
         try {
             PreparedStatement st = mConnection.prepareStatement(
                     "INSERT INTO `lodging` " +
-                            "(signatura, `name`, description, `type`, phone, locality, address, marks, postalcode, municipalitycode, `coordinates`," +
+                            "(signatura, `name`, description, `type`, phone, address, marks, postalcode, municipalitycode, `coordinates`," +
                             " category, turismemail, web, capacity, friendlyurl, physicalurl, zipfile) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE " +
-                            "signatura = ?, `name` = ?, description = ?, `type` = ?, phone = ?, locality = ?, address = ?, marks = ?," +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE " +
+                            "signatura = ?, `name` = ?, description = ?, `type` = ?, phone = ?, address = ?, marks = ?," +
                             " postalcode = ?, municipalitycode = ?, `coordinates` = ?, category = ?, turismemail = ?, web = ?, capacity = ?, friendlyurl = ?, physicalurl = ?, zipfile = ?");
 
             int i = 1;
-            int x = i + 18;
+            int x = i + 17;
 
             //Insert_Signatura
             st.setString(i++, lodging.getSignatura());
@@ -93,11 +93,6 @@ public class Query {
             st.setString(i++, lodging.getPhone());
             //Update_Phone
             st.setString(x++, lodging.getPhone());
-
-            //Insert_Locality
-            st.setString(i++, lodging.getLocality());
-            //Update_Locality
-            st.setString(x++, lodging.getLocality());
 
             //Insert_Address
             st.setString(i++, lodging.getAddres());

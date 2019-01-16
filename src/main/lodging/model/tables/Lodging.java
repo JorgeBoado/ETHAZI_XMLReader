@@ -17,7 +17,6 @@ public class Lodging {
     private String description;
     private String type;
     private String phone;
-    private String locality;
     private String addres;
     private String marks;
     private String postalcode;
@@ -75,14 +74,6 @@ public class Lodging {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getLocality() {
-        return locality;
-    }
-
-    public void setLocality(String locality) {
-        this.locality = locality;
     }
 
     public String getAddres() {

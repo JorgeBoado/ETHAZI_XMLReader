@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Esta clase es la encargada de leer el XML y generar y llenar los Objeros de alojamientos.
  *
  * @author Jorge
- * @version 1.1
+ * @version 1.2
  * @since 2019-01-05
  */
 
@@ -37,6 +37,7 @@ public class XML_Reader {
     /**
      * Lee el  XML y lo separa en nodos.
      * Llena el ArrayList con los alojamientos.
+     * Los alojamientos que no tengan los datos correctos se omitiran.
      */
     public void readAll() {
 
@@ -54,7 +55,9 @@ public class XML_Reader {
                 for (int x = 0; x < childrens.getLength(); x++) {
                     insertAlojamiento(lodging, childrens.item(x).getNodeName(), childrens.item(x).getTextContent());
                 }
-                lodgings.add(lodging);
+                if (!lodging.getFriendlyurl().startsWith("E")) {
+                    lodgings.add(lodging);
+                }
             }
 
         } catch (Exception e) {
@@ -66,9 +69,10 @@ public class XML_Reader {
     /**
      * Localiza las etiquetas en la String que recibe y segun la etiqueta que encuentre va asignando
      * los atributos al objeto de apartamentos que se ha mandado.
-     * @param lodging El objeto de apartamento mandado.
+     *
+     * @param lodging  El objeto de apartamento mandado.
      * @param nodeName Es la String que recibe para identificar que atributo es.
-     * @param value String con el contenido del atributo del objeto.
+     * @param value    String con el contenido del atributo del objeto.
      */
     private void insertAlojamiento(Lodging lodging, String nodeName, String value) {
 
@@ -87,9 +91,6 @@ public class XML_Reader {
                 break;
             case "phone":
                 lodging.setPhone(value.replaceAll("\\s+", ""));
-                break;
-            case "locality":
-                lodging.setLocality(value);
                 break;
             case "address":
                 lodging.setAddres(value);
@@ -132,6 +133,7 @@ public class XML_Reader {
 
     /**
      * Devuelve un ArrayList.
+     *
      * @return Devuelve el ArrayList de apartamentos.
      */
     public ArrayList<Lodging> getLodgings() {
