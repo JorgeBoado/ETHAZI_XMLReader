@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * Esta clase gestiona todas las funciones de los botones de las ventanas.
  *
  * @author Jorge
- * @version 1.2
+ * @version 1.2.1
  * @since 2018-12-29
  */
 
@@ -78,6 +78,7 @@ public class ButtonController implements ActionListener {
                 Window.getInstance().getProgressBar().setValue(0);
                 Window.getInstance().getProgressBar().setVisible(true);
                 Window.getInstance().getBtn_ImportData().setEnabled(false);
+                Window.getInstance().getBtn_Find().setEnabled(false);
 
                 new Thread(() -> {
                     XML_Reader mReader = new XML_Reader(Window.getInstance().getTxf_FilePath().getText());
@@ -93,6 +94,7 @@ public class ButtonController implements ActionListener {
                     JOptionPane.showMessageDialog(null, mReader.getLodgings().size() + " lodging(s) have been imported and " + mQuery.getErrorNumber() + " row(s) have been skipped.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Window.getInstance().getBtn_ImportData().setEnabled(true);
                     Window.getInstance().getProgressBar().setVisible(false);
+                    Window.getInstance().getBtn_Find().setEnabled(true);
                     mQuery.setErrorNumber(0);
                     //JOptionPane.showMessageDialog(null, "No se han introducido " + mQuery.getErrorNumber()+".", "Skipped rows", JOptionPane.ERROR_MESSAGE);
                 }).start();

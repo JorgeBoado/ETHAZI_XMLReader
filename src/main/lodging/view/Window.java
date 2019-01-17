@@ -10,7 +10,7 @@ import java.awt.*;
  * Clase de interfaz grafica.
  *
  * @author Jorge
- * @version 1.2
+ * @version 1.2.1
  * @since 2018-12-29
  */
 public class Window {
@@ -69,6 +69,7 @@ public class Window {
         txf_FilePath.setBounds(10, 42, 300, 20);
         frame.getContentPane().add(txf_FilePath);
         txf_FilePath.setColumns(10);
+        txf_FilePath.setEditable(false);
 
         btn_Find = new JButton("Find");
         btn_Find.setFont(new Font("Rockwell", Font.PLAIN, 12));
@@ -110,6 +111,10 @@ public class Window {
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public JButton getBtn_Find() {
+        return btn_Find;
     }
 
     public JTextField getTxf_FilePath() {
