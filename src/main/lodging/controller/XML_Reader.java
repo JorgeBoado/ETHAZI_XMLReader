@@ -1,5 +1,6 @@
 package controller;
 
+import model.SQL.Query;
 import model.tables.Lodging;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Esta clase es la encargada de leer el XML y generar y llenar los Objeros de alojamientos.
  *
  * @author Jorge
- * @version 1.2
+ * @version 1.2.1
  * @since 2019-01-05
  */
 
@@ -55,8 +56,10 @@ public class XML_Reader {
                 for (int x = 0; x < childrens.getLength(); x++) {
                     insertAlojamiento(lodging, childrens.item(x).getNodeName(), childrens.item(x).getTextContent());
                 }
-                if (!lodging.getFriendlyurl().startsWith("E")) {
+                if (!lodging.getFriendlyurl().startsWith("E") || null != lodging.getPostalcode() || null != lodging.getCoordinates()) {
                     lodgings.add(lodging);
+                } else {
+                    Query.getInstance().setErrorNumber(Query.getInstance().getErrorNumber() + 1);
                 }
             }
 
